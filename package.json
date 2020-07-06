@@ -1,0 +1,14 @@
+{
+  "name": "pwasepakbola",
+  "version": "1.0.0",
+  "description": "Untuk Submission 2 PWA",
+  "main": "service-worker.js",
+  "scripts": {
+    "start-generate": "web-push generate-vapid-keys --json"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "web-push": "^3.4.4"
+  }
+}

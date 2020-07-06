@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>SoccerInfo.id - Informasi Sepak Bola Dunia</title>
+	<meta charset="utf-8">
+	<meta name="description" content="Wadah Informasi Sepak Bola Dunia">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="theme-color" content="#a7fb35">
+	<link rel="stylesheet" type="text/css" href="assets/css/materialize.min.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/style-custom.css">
+	<link rel="manifest" href="/manifest.json">
+	<link rel="apple-touch-icon" href="./assets/images/apple-icon192x192">
+	<link rel="icon" href="./assets/images/icon24x24.png" type="image/icon">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+	<div class="navbar-fixed">
+		<nav class="green darken-2" role="navigation">
+			<div class="nav-wrapper container">
+				<a href="#" class="brand-logo" id="logo-container">SoccerInfo.id</a>
+				<a href="./#matchlist" id="tombolback" class="sidenav-trigger" data-target="nav-mobile"><i class="material-icons">arrow_back</i></a>
+
+				<ul class="topnav right hide-on-med-and-down"></ul>
+				<ul class="sidenav" id="nav-mobile"></ul>
+			</div>
+		</nav>
+	</div>
+	<!--Akhir Navigasi-->
+	<h3 style="text-align: center;">Head2Head</h3>
+	<div class="container">
+		<table class="centered">
+			
+				<tr>
+					<td></td>
+					<td>Home</td>
+					<td></td>
+					<td>Away</td>
+					<td></td>
+				</tr>
+			
+			<tbody id="matchdetail1">
+				
+			</tbody>
+		</table>
+		<h4>Overview</h4>
+		<table class="highlight">
+			<tbody id="matchdetail2">
+				
+			</tbody>
+		</table>
+	</div>
+	
+	<div class="fixed-action-btn">
+    	<a class="waves-effect btn-floating btn-large green" id="btnsave">
+    		<i class="large material-icons">save</i>
+    	</a>
+    	<a class="waves-effect btn-floating btn-large red" id="btndelete">
+    		<i class="large material-icons">delete</i>
+    	</a>
+	</div>
+
+	<div class="footer">
+		<p>Submission - Belajar Membuat Progresive Web Application &#169; 2020, Dicoding Academy</p>		
+	</div>
+
+	<script src="assets/js/materialize.min.js"></script>
+	<script src="assets/js/api.js"></script>
+	<script src="assets/js/idb.js"></script>
+	<script src="assets/js/db.js"></script>
+	<script type="text/javascript">
+		//lakukanregister SERVICE-WORKER
+		if("serviceWorker" in navigator)
+		{
+			window.addEventListener("load",function()
+			{
+				navigator.serviceWorker
+				.register("/service-worker.js")
+				.then(function()
+				{
+					console.log("Service Worker Berhasil! (SW_INITIALIZE_SUCCESS)");
+				})
+				.catch(function()
+				{
+					console.log("Service Worker gagal di Inisialisasi (FAILED_TO_INITIALIZE)");
+				});
+			});
+		}
+		else
+		{
+			console.log("Service Worker belum didukung pada browser ini (SW_NOT_SUPPORTED_IN_TB)");
+		}
+
+		// Request API
+		document.addEventListener("DOMContentLoaded", function()
+		{
+			var urlParams = new URLSearchParams(window.location.search);
+		  	var isFromSaved = urlParams.get("saved");
+			var btnSave = document.getElementById("btnsave");
+			var btnDelete = document.getElementById("btndelete");
+		  	var btnBack = document.getElementById("tombolback");
+
+		  	if (isFromSaved) 
+		  	{
+		    	// Hide fab jika dimuat dari indexed db
+		    	btnSave.style.display = 'none';
+		    	// ambil artikel lalu tampilkan
+		    	dapatkanMatchTersimpanById();
+		    	// atur tombol kembalinya
+		    	btnBack.setAttribute('href','./#savedmatch');
+		  	} 
+		  	else 
+		  	{
+		  		btnDelete.style.display = 'none';
+		    	var item = getMatchById();
+		  	}
+			
+			btnSave.onclick = function()
+			{
+				console.log("Tombol Simpan work! (SAVED)");
+				item.then(function(idmatch)
+				{
+					saveMatch(idmatch);
+				});
+			}
+
+			btnDelete.onclick = function()
+			{
+				console.log("btn delete work! ready to initiate!");
+				if(window.confirm('Yakin ingin menghapus pertandingan Favorit anda?'))
+				{
+					hapusMatchFav(item);
+					alert('Berhasil Menghapus Match Favorit.');
+				}
+				else
+				{ 
+					console.log("Dibatalkan");
+					return; 
+				}
+			}
+
+		});
+
+	</script>
+</body>
+</html>

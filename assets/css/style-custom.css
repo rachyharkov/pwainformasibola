@@ -1,0 +1,104 @@
+li a span .material-icons
+{
+	display: inline-flex;
+	vertical-align: top;
+	margin-right: 5px;
+}
+
+div .bungkus
+{
+	width: 100%;
+	height: 650px;
+	background-image: url('/assets/images/landing-image.png');
+	background-size: cover;
+}
+
+.landingtext-container
+{
+	position: absolute;
+	color: white;
+	margin: 0;
+	top: 170px;
+}
+
+.landingtext-container h2
+{
+	font-size: 75px;
+}
+
+.landingtext-container p
+{
+	font-size: 25px;
+}
+
+.footer
+{
+	width: 100%;
+	padding: 20px;
+	color: white;
+	background-color: #679c20;
+	text-align: center;
+	font-weight: bold;
+	display: block;
+}
+
+.logo-sosmed-top
+{
+	display: none;
+}
+
+.logo-sosmed-side
+{
+	display: block;
+}
+
+.tombolhubungi
+{
+	display: none;
+}
+
+
+@media screen and (max-width: 992px)
+{
+	.logo-sosmed-top
+	{
+		display: block;
+	}
+	
+	.logo-sosmed-side
+	{
+		display: none;
+	}
+
+	li a .material-icons
+	{
+		display: none;
+	}
+
+	.landingtext-container h2
+	{
+		font-size: 45px;
+	}
+
+	.landingtext-container p
+	{
+		font-size: 16px;
+	}
+
+	.landingtext-container
+	{
+		color: white;
+		text-align: center;
+		margin-right: 8%;
+	}
+
+	.actionhide
+	{
+		display: none;
+	}
+
+	.buttonwrapper
+	{
+		text-align: center;
+	}
+}

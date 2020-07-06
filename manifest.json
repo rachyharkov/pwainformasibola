@@ -1,0 +1,22 @@
+{
+	"name"				: "SoccerInfo.Id - SepakBola PWA",
+	"short_name"		: "SoccerInfo Lite",
+	"description"		: "Aplikasi PWA Untuk Memenuhi Tugas Submission 2",
+	"start_url"			: "/index.html",
+	"display"			: "standalone",
+	"background_color"	: "#388e3c",
+	"theme_color"		: "#388e3c",
+	"icons"				: [
+		{
+			"src"	: "/assets/images/icon512x512.png",
+			"sizes"	: "512x512",
+			"type"	: "image/png"
+		},
+		{
+			"src"	: "/assets/images/icon192x192.png",
+			"sizes"	: "192x192",
+			"type"	: "image/png"	
+		}
+	],
+  	"gcm_sender_id": "513496835487"
+}
