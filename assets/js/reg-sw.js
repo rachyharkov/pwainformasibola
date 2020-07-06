@@ -4,7 +4,7 @@ if("serviceWorker" in navigator)
 	window.addEventListener("load",function()
 	{
 		navigator.serviceWorker
-		.register('pwainformasibola/service-worker.js')
+		.register('./service-worker.js')
 		.then(function()
 		{
 			console.log("Service Worker Berhasil di Inisialisasi! (SW_INITIALIZE_SUCCESS)");
